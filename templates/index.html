@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Registro de Usuarios{% endblock %}
+
+{% block content %}
+<h1>Registro de Usuarios</h1>
+<p>Total de usuarios registrados: {{ total_usuarios }}</p>
+
+<ul>
+  {% for usuario in usuarios %}
+    <li>
+      <strong>Nombre:</strong> {{ usuario.nombre }} | <strong>Documento:</strong> {{ usuario.documento }} | <strong>Teléfono:</strong> {{ usuario.telefono }}
+      <form action="/borrar/{{ usuario.nombre }}" method="POST" style="display:inline;">
+        <button type="submit" class="btn borrar-btn">Borrar</button>
+      </form>
+    </li>
+  {% endfor %}
+</ul>
+
+<h2>Registrar Nuevo Usuario</h2>
+<form action="/registro" method="POST">
+    <input type="text" name="nombre" placeholder="Nombre de usuario" required>
+    <input type="text" name="documento" placeholder="Documento de identidad" required>
+    <input type="text" name="telefono" placeholder="Número de teléfono" required>
+    <button type="submit" class="btn">Registrar</button>
+    <button type="reset" class="btn reset-btn">Restablecer</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Registrar Usuario{% endblock %}
+
+{% block content %}
+<h1>Registrar Usuario</h1>
+{% if error %}
+<p class="error">{{ error }}</p>
+{% endif %}
+<form action="{{ url_for('registro') }}" method="POST">
+    <label for="nombre">Nombre:</label>
+    <input type="text" name="nombre" required><br>
+
+    <label for="documento">Documento de Identidad:</label>
+    <input type="text" name="documento" required><br>
+
+    <label for="telefono">Número de Teléfono:</label>
+    <input type="text" name="telefono" required><br>
+
+    <button type="submit" class="btn">Registrar</button>
+</form>
+{% endblock %}
